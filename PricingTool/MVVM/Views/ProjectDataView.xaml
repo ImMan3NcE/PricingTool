@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PricingTool.MVVM.Views.ProjectDataView"
+             Title="ProjectDataView"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#57DEC4">
+    
+    
+    <Grid ColumnDefinitions=".6*,.4*"
+          Margin="50">
+        <Grid Grid.Column="0"
+              RowDefinitions="*,*,*,*,*,*,*,*"
+              Margin="10">
+            
+            <Grid ColumnDefinitions=".7*,.3*" >
+                <Entry x:Name="entryMainPath" Placeholder="Podaj miejsce docelowe zapisu pliku" Text="C:\Users\Filip\Desktop\testyCsv\Nowy folder"/>
+                <Entry x:Name="entryMainName" Grid.Column="1" Placeholder="Podaj nazwę docelową."
+                       HeightRequest="7"
+                       WidthRequest="200"
+                       />
+            </Grid>
+            
+            <Grid Grid.Row="1"
+                 ColumnDefinitions=".7*,.3*">
+                <Entry x:Name="entryLDC" Placeholder="Wklej ścieżkę do pliku LDC!" />
+                <Switch  Grid.Column="1"
+                        IsToggled="True"
+                         Toggled="Switch_Toggled"
+                         x:Name="switchLDC"/>
+            </Grid>
+            <!--Text="C:\Users\Filip\Desktop\testyCsv\I17-106-V01-S_HABO_LDC - niedzielona.xlsx"-->
+            <Grid Grid.Row="2"
+                  ColumnDefinitions=".7*,.3*">
+                <Entry x:Name="entryLPA" Placeholder="Wklej ścieżkę do pliku LPA!" Text="C:\Users\Filip\Desktop\testyCsv\I17-106-V01-S_HABO_LPA - niedzielona.xlsx"/>
+                <Switch  x:Name="switchLPA"
+                    Grid.Column="1"
+                         Toggled="Switch_Toggled"
+                         IsToggled="True"/>
+            </Grid>
+            
+            <Grid Grid.Row="3"
+                  ColumnDefinitions=".7*,.3*">
+                <Entry x:Name="entryLPL" Placeholder="Wklej ścieżkę do pliku LPL!" Text="C:\Users\Filip\Desktop\testyCsv\KCS11551-f - I17-106-V01-S_LPL.xlsx"/>
+                <Switch Grid.Column="1"
+                        x:Name="switchLPL"
+                        Toggled="Switch_Toggled"
+                        IsToggled="True"/>
+                
+            </Grid>
+
+            <Grid Grid.Row="4"
+                  ColumnDefinitions=".7*,.3*">
+                <Entry x:Name="entryLAC" Placeholder="Wklej ścieżkę do pliku LAC!" Text="C:\Users\Filip\Desktop\testyCsv\KCS11551-f - I17-106-V01-S_LAC.xlsx"/>
+                <Switch Grid.Column="1"
+                        x:Name="switchLAC"
+                        Toggled="Switch_Toggled"
+                        IsToggled="True"/>
+            </Grid>
+            
+            <Grid Grid.Row="5"
+                  ColumnDefinitions=".7*,.3*">
+                <Entry x:Name="entryTrave" Placeholder="Wklej ścieżkę do pliku Trave!" Text="C:\Users\Filip\Desktop\testyCsv\KCS11551-f - I17-106-V01-S_TRAVEE.csv"/>
+                <Switch Grid.Column="1"
+                        x:Name="switchTrave"
+                        Toggled="Switch_Toggled"
+                        IsToggled="True"/>
+            </Grid>
+            
+            <Grid Grid.Row="6"
+                    ColumnDefinitions=".7*,.3*">
+                <Entry x:Name="entryLTU" Placeholder="Wklej ścieżkę do pliku LTU!" Text="C:\Users\Filip\Desktop\testyCsv\KCS11551-f - I17-106-V01-S_LTU.xlsx"/>
+                <Switch Grid.Column="1"
+                        x:Name="switchLTU"
+                        Toggled="Switch_Toggled"
+                        IsToggled="True"/>
+            </Grid>
+
+            <Grid Grid.Row="7"
+                    ColumnDefinitions=".7*,.3*">
+                <Entry x:Name="entryLKK" Placeholder="Wklej ścieżkę do pliku LKK!" Text="C:\Users\Filip\Desktop\testyCsv\KCS11551-f - I17-106-V01-S_LKK.xlsx"/>
+                <Switch Grid.Column="1"
+                        x:Name="switchLKK"
+                        Toggled="Switch_Toggled"
+                        IsToggled="True"
+                        />
+            </Grid>
+
+            
+
+        </Grid>
+        
+        <!-- cześć z informacjami-->
+        <Grid Grid.Column="1" RowDefinitions="*,*,*" Style="{StaticResource GridResults}">
+            <Button Text="Kill excel"
+                    Clicked="Button_Clicked"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+            <!--<ImageButton x:Name="btnStart" Grid.Row="1"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         Source="percentages_start.png"
+                         Clicked="ImageButton_Clicked"
+                         BackgroundColor="Transparent"
+                         />-->
+            <Grid Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Transparent" >
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Grid.GestureRecognizers>
+                <Image Source="btnbackgroundstart.png" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Label x:Name="lblPercentages"
+                       Style="{StaticResource LblButtonStart}"
+                       Text="START" />
+            </Grid>
+            <CollectionView  Grid.Row="2" ItemsSource="{Binding Steps}" >
+            <!--<CollectionView Grid.Row="2" >-->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label 
+                               Text="{Binding dataLDC{0}}"
+                               VerticalOptions="End"
+                               HorizontalOptions="End"
+                               Margin="0,0,10,10"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+            
+
+        </Grid>
+    </Grid>
+</ContentPage>

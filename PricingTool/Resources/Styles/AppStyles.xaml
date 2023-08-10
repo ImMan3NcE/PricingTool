@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!--https://paletton.com/#uid=13c0u0kvpLjjpPspgMYJKAfIJpJ-->
+    <!--https://paletton.com/#uid=13c0u0kjtPx8eYsetUmnQJ-swBY-->
+    
+    <!--<Style TargetType="Entry" x:Key="EntryProjView">
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="TextCaveat"/>
+        <Setter Property="Margin" Value="10,10,0,0"/>
+        <Setter Property="HeightRequest" Value="10"/>
+        <Setter Property="WidthRequest" Value="200"/>
+        <Setter Property="BackgroundColor" Value="Red"/>
+
+    </Style>-->
+    
+    <Style TargetType="Entry" >
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="TextCaveat"/>
+        <Setter Property="Margin" Value="10,10,0,0"/>
+        <Setter Property="HeightRequest" Value="10"/>
+        <Setter Property="BackgroundColor" Value="#B8F8EB"/>
+        <Setter Property="TextColor" Value="#18446F"/>
+        <Setter Property="PlaceholderColor" Value="#14B797"/>
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <!--<Setter Property="FontAttributes" Value="Italic"/>-->
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="FontAttributes" Value="Italic"/>
+                            <Setter Property="PlaceholderColor" Value="IndianRed"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+        
+
+    </Style>
+
+    <Style TargetType="Switch">
+        <Setter Property="OnColor" Value="#14B797"/>
+        <Setter Property="ThumbColor" Value="#18446F"/>
+        <Setter Property="Margin" Value="15"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <!--<Setter Property="HorizontalOptions" Value="Center"/>-->
+        
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    
+                    <VisualState x:Name="On">
+                        <VisualState.Setters>
+                            <Setter Property="OnColor" Value="#14B797" />
+                            <Setter Property="ThumbColor" Value="#18446F" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Off">
+                        <VisualState.Setters>
+                            <Setter Property="ThumbColor" Value="IndianRed" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+        <!--<Setter Property="Color" Value="LightCoral"/>-->
+    </Style>
+
+    <Style TargetType="Grid" x:Key="GridResults">
+        <Setter Property="BackgroundColor" Value="#81ECD7"/>
+        <Setter Property="Margin" Value="0"/>
+        
+    </Style>
+
+    <Style TargetType="Label" x:Key="LblButtonStart">
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="FontSize" Value="50"/>
+        <Setter Property="TextColor" Value="#18446F"/>
+
+        
+    </Style>
+
+
+</ResourceDictionary>
