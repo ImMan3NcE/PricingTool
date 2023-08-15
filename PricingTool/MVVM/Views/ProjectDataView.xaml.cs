@@ -1,5 +1,5 @@
 using PricingTool.MVVM.ViewModels;
-using PropertyChanged;
+
 
 namespace PricingTool.MVVM.Views;
 
@@ -286,12 +286,12 @@ public partial class ProjectDataView : ContentPage
 
     public async void GenerateFile()
     {
-        if (!string.IsNullOrEmpty(entryLDC.Text))
+        if (!string.IsNullOrEmpty(ldcPath))
             projectDataViewModel.TransformLDC(ldcPath);
         lblPercentages.Text = "15 %";
         await Task.Delay(100);
 
-        if (!string.IsNullOrEmpty(entryLPA.Text))
+        if (!string.IsNullOrEmpty(lpaPath))
             projectDataViewModel.TransformLPA(lpaPath);
         lblPercentages.Text = "30 %";
         await Task.Delay(100);
@@ -317,10 +317,10 @@ public partial class ProjectDataView : ContentPage
         await Task.Delay(100);
         if (!string.IsNullOrEmpty(entryLKK.Text))
             projectDataViewModel.TransformLKK(lkkPath);
-        lblPercentages.Text = "85 %";
+        lblPercentages.Text = "95 %";
         await Task.Delay(100);
 
-        projectDataViewModel.NewFileExcel((entryMainPath.Text.Replace("\"", "") + "\\" + entryMainName.Text.Replace("\"", "")));
+        projectDataViewModel.NewFileExcel((entryMainPath.Text.Replace("\"", "") + "\\" + entryMainName.Text.Replace("\"", "")+".xlsx"));
         lblPercentages.Text = "Done!";
     }
 }

@@ -15,19 +15,64 @@
 		<ApplicationTitle>PricingTool</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.pricingtool</ApplicationId>
+		<ApplicationId>com.ImManeNcE.pricingtool</ApplicationId>
 		<ApplicationIdGuid>7af3a830-68e8-42a7-8f18-baae8cf0b35c</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
+		<!--Nowa linia-->
+		<!--<WindowsPackageType>None</WindowsPackageType>-->
+		
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+		<AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+		<AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
+		<GenerateTestArtifacts>True</GenerateTestArtifacts>
+		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+		<PackageCertificateThumbprint>AA5ED4635CBEED8199B01CF5E1210C3DAFB9566A</PackageCertificateThumbprint>
+		<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+		<Company>ImManeNcE</Company>
+		<Authors>ImManeNcE</Authors>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
+	  <ApplicationId>com.ImManeNcE.pricingtool</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <ApplicationId>com.ImManeNcE.pricingtool</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
+	  <ApplicationId>com.ImManeNcE.pricingtool</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.19041.0|AnyCPU'">
+	  <ApplicationId>com.ImManeNcE.pricingtool</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
+	  <ApplicationId>com.ImManeNcE.pricingtool</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+	  <ApplicationId>com.ImManeNcE.pricingtool</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
+	  <ApplicationId>com.ImManeNcE.pricingtool</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'">
+	  <ApplicationId>com.ImManeNcE.pricingtool</ApplicationId>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -50,14 +95,6 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\btnbackgroundstart.png" />
-	  <None Remove="Resources\Images\percentages15.png" />
-	  <None Remove="Resources\Images\percentages30.png" />
-	  <None Remove="Resources\Images\percentages45.png" />
-	  <None Remove="Resources\Images\percentages60.png" />
-	  <None Remove="Resources\Images\percentages75.png" />
-	  <None Remove="Resources\Images\percentages90.png" />
-	  <None Remove="Resources\Images\percentages_done.png" />
-	  <None Remove="Resources\Images\percentages_start.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -72,13 +109,9 @@
 	  </COMReference>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <PackageReference Include="Fody" Version="6.8.0">
-	    <PrivateAssets>all</PrivateAssets>
-	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	  </PackageReference>
+	<!--<ItemGroup>
 	  <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
-	</ItemGroup>
+	</ItemGroup>-->
 
 	<ItemGroup>
 	  <MauiXaml Update="MVVM\Views\ProjectDataView.xaml">

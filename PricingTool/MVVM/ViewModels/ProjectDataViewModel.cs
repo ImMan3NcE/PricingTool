@@ -6,13 +6,13 @@ using Excel = Microsoft.Office.Interop.Excel;
 using static PricingTool.MVVM.Views.ProjectDataView;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using PropertyChanged;
+
 using System.ComponentModel;
 
 
 namespace PricingTool.MVVM.ViewModels;
 
-[AddINotifyPropertyChangedInterface]
+
 public class ProjectDataViewModel : ContentPage
 {
 
@@ -483,21 +483,21 @@ public class ProjectDataViewModel : ContentPage
 
 
             }
-            lastRowCSV += projectData.dataLPL.Count;
+            lastRowCSV += projectData.dataLKK.Count;
         }
         
         #endregion
         if (File.Exists(outputFile))
         {
-            try
-            {
+            //try
+            //{
                 File.Delete(outputFile);
                 newWorkbook.SaveAs(outputFile);
-            }
-            catch (IOException ex)
-            {
-                //lblLicznik.Text = $"zamknij plik ";
-            }
+            //}
+            //catch (IOException ex)
+            //{
+            //    //lblLicznik.Text = $"zamknij plik ";
+            //}
 
         }
         else
