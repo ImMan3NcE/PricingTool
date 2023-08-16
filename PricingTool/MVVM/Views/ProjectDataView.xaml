@@ -100,8 +100,8 @@
                         VerticalOptions="Center"
                         HorizontalOptions="Center"/>
                 <Label Text="{Binding LabelText}"/>
-                <Button Text="Kill excel"
-                        Clicked="Button_Clicked"
+                <Button Text="CheckList"
+                        Clicked="CheckListPopUp"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"/>
 

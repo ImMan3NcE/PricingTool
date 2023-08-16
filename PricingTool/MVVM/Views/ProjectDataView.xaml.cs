@@ -1,3 +1,4 @@
+using CommunityToolkit.Maui.Views;
 using PricingTool.MVVM.Models;
 using PricingTool.MVVM.ViewModels;
 using System.Collections.ObjectModel;
@@ -430,5 +431,8 @@ public partial class ProjectDataView : ContentPage
         });
     }
 
-
+    private void CheckListPopUp(object sender, EventArgs e)
+    {
+        this.ShowPopup(new PopUpChecklistProject());
+    }
 }

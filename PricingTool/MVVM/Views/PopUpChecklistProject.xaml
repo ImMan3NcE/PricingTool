@@ -1,12 +1,308 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PricingTool.MVVM.Views.PopUpChecklistProject"
-             Title="PopUpChecklistProject">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
-</ContentPage>
+       xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+             x:Class="PricingTool.MVVM.Views.PopUpChecklistProject">
+
+    <Grid RowDefinitions=".1*,.9*" BackgroundColor="#81ECD7">
+        
+        <Button Text="x" BackgroundColor="Transparent" Clicked="Button_Clicked" HeightRequest="2" WidthRequest="2" HorizontalOptions="Start" TextColor="Red" 
+                BorderColor="Red"/>
+        <WebView Grid.Row="1">
+        <WebView.Source>
+            <HtmlWebViewSource>
+                <HtmlWebViewSource.Html>
+                    <![CDATA[
+                        <! DOCTYPE html>
+                        <html>
+                            <head>
+                                <title>Checklista do projektu!</title>
+                                <style>
+                                    table {
+                                            border-collapse: collapse;
+                                            width: 100%;
+                                          }
+  
+                                          th, td {
+                                            border: 1px solid black;
+                                            padding: 8px;
+                                            text-align: left;
+                                          }
+  
+                                          input[type="checkbox"] {
+                                            margin-left: 5px;
+                                          }
+                                </style>
+                            </head>
+                            <body>
+
+                                <h2>Checklista do projektu!</h2>
+
+                                <form>
+                                    <table>
+                                        <tr>
+                                            <th>Numer</th>
+                                            <th>Pytanie</th>
+                                            <th>Tak</th>
+                                            <th>Nie</th>
+                                            <th>Nie dotyczy</th>
+                                        </tr>
+                                        <tr>
+                                            <td>1.</td>
+                                            <td>Czy gra wewnętrzna?</td>
+                                            <td> <input type="checkbox" name="gra_wewnetrzna" value="Tak"></td>
+                                            <td>
+                                                <input type="checkbox" name="gra_wewnetrzna" value="Nie">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="gra_wewnetrzna" value="Nie dotyczy">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2.</td>
+                                            <td>Czy kolumny są rozmieszczone prawidłowo?(pliku csv)</td>
+                                            <td>
+                                                <input type="checkbox" name="kolumny_rozmieszczenie" value="Tak">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="kolumny_rozmieszczenie" value="Nie">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="kolumny_rozmieszczenie" value="Nie dotyczy">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3.</td>
+                                            <td>Czy decki mają prawidłowo przypisany materiał?</td>
+                                            <td>
+                                                <input type="checkbox" name="decki_material" value="Tak">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="decki_material" value="Nie">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="decki_material" value="Nie dotyczy">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>4.</td>
+                                            <td>Czy decki mają prawidłowo przypisany wymiar?</td>
+                                            <td>
+                                                <input type="checkbox" name="decki_wymiar" value="Tak">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="decki_wymiar" value="Nie">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="decki_wymiar" value="Nie dotyczy">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>5.</td>
+                                            <td>Czy decki mają prawidłowo przypisane activity?</td>
+                                            <td>
+                                                <input type="checkbox" name="decki_activity" value="Tak">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="decki_activity" value="Nie">
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="decki_activity" value="Nie dotyczy">
+                                            </td>
+                                        </tr>
+                                        <tr>
+      <td>6.</td>
+      <td>Czy materac jest dodany?</td>
+      <td><input type="checkbox" name="materac" value="Tak"></td>
+      <td><input type="checkbox" name="materac" value="Nie"></td>
+      <td><input type="checkbox" name="materac" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>7.</td>
+      <td>Czy panele mają prawidłowo przypisany materiał? (UV, czy bez UV)</td>
+      <td><input type="checkbox" name="panele_material" value="Tak"></td>
+      <td><input type="checkbox" name="panele_material" value="Nie"></td>
+      <td><input type="checkbox" name="panele_material" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>8.</td>
+      <td>Czy panele mają prawidłowo przypisany wymiar?</td>
+      <td><input type="checkbox" name="panele_wymiar" value="Tak"></td>
+      <td><input type="checkbox" name="panele_wymiar" value="Nie"></td>
+      <td><input type="checkbox" name="panele_wymiar" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>9.</td>
+      <td>Czy panele mają prawidłowo przypisane activity?</td>
+      <td><input type="checkbox" name="panele_activity" value="Tak"></td>
+      <td><input type="checkbox" name="panele_activity" value="Nie"></td>
+      <td><input type="checkbox" name="panele_activity" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>10.</td>
+      <td>Czy panele mają prawidłowo przypisaną grafikę?</td>
+      <td><input type="checkbox" name="panele_grafika" value="Tak"></td>
+      <td><input type="checkbox" name="panele_grafika" value="Nie"></td>
+      <td><input type="checkbox" name="panele_grafika" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>11.</td>
+      <td>Czy operacje SVR są przypisane do decków i paneli?</td>
+      <td><input type="checkbox" name="operacje_SVR" value="Tak"></td>
+      <td><input type="checkbox" name="operacje_SVR" value="Nie"></td>
+      <td><input type="checkbox" name="operacje_SVR" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>12.</td>
+      <td>Czy opisy przy panelach i dekach zawierają błędy?</td>
+      <td><input type="checkbox" name="opisy_bledy" value="Tak"></td>
+      <td><input type="checkbox" name="opisy_bledy" value="Nie"></td>
+      <td><input type="checkbox" name="opisy_bledy" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>13.</td>
+      <td>Czy elementy przypisane do paneli i deków nie zawierają spacji, lub innych zbędnych znaków?</td>
+      <td><input type="checkbox" name="elementy_spacje" value="Tak"></td>
+      <td><input type="checkbox" name="elementy_spacje" value="Nie"></td>
+      <td><input type="checkbox" name="elementy_spacje" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>14.</td>
+      <td>Czy część LPL zawiera wszystkie elementy z dokumentacji?</td>
+      <td><input type="checkbox" name="czesc_LPL_elementy" value="Tak"></td>
+      <td><input type="checkbox" name="czesc_LPL_elementy" value="Nie"></td>
+      <td><input type="checkbox" name="czesc_LPL_elementy" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>15.</td>
+      <td>Czy część LPL zawiera prawidłowo rozpisany Vinyl?</td>
+      <td><input type="checkbox" name="czesc_LPL_vinyl" value="Tak"></td>
+      <td><input type="checkbox" name="czesc_LPL_vinyl" value="Nie"></td>
+      <td><input type="checkbox" name="czesc_LPL_vinyl" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>16.</td>
+      <td>Czy część LPL zawiera prawidłowo rozpisane regulaminy?</td>
+      <td><input type="checkbox" name="czesc_LPL_regulaminy" value="Tak"></td>
+      <td><input type="checkbox" name="czesc_LPL_regulaminy" value="Nie"></td>
+      <td><input type="checkbox" name="czesc_LPL_regulaminy" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>17.</td>
+      <td>Czy listwy na LPL są CP?</td>
+      <td><input type="checkbox" name="listwy_CP" value="Tak"></td>
+      <td><input type="checkbox" name="listwy_CP" value="Nie"></td>
+      <td><input type="checkbox" name="listwy_CP" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>18.</td>
+      <td>Czy AC, które nie znajduje się na deckach/panelach jest rozpisane pod częścią LPL?</td>
+      <td><input type="checkbox" name="AC_rozpisanie" value="Tak"></td>
+      <td><input type="checkbox" name="AC_rozpisanie" value="Nie"></td>
+      <td><input type="checkbox" name="AC_rozpisanie" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>19.</td>
+      <td>Czy elementy slide'u są rozpisane zgodnie z dokumentacją?</td>
+      <td><input type="checkbox" name="slide_rozpisanie" value="Tak"></td>
+      <td><input type="checkbox" name="slide_rozpisanie" value="Nie"></td>
+      <td><input type="checkbox" name="slide_rozpisanie" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>20.</td>
+      <td>Czy elementy polyetylenowe są przypisane prawidłowo? (Cp-cięte)</td>
+      <td><input type="checkbox" name="polyetylen_przypisanie" value="Tak"></td>
+      <td><input type="checkbox" name="polyetylen_przypisanie" value="Nie"></td>
+      <td><input type="checkbox" name="polyetylen_przypisanie" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>21.</td>
+      <td>Czy rury zgadzają się z plikiem TRAVE?</td>
+      <td><input type="checkbox" name="rury_TRAVE" value="Tak"></td>
+      <td><input type="checkbox" name="rury_TRAVE" value="Nie"></td>
+      <td><input type="checkbox" name="rury_TRAVE" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>22.</td>
+      <td>Czy rury mają prawidłowo przypisany materiał?</td>
+      <td><input type="checkbox" name="rury_material" value="Tak"></td>
+      <td><input type="checkbox" name="rury_material" value="Nie"></td>
+      <td><input type="checkbox" name="rury_material" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>23.</td>
+      <td>Czy rury mają prawidłowo przypisany wymiar?</td>
+      <td><input type="checkbox" name="rury_wymiar" value="Tak"></td>
+      <td><input type="checkbox" name="rury_wymiar" value="Nie"></td>
+      <td><input type="checkbox" name="rury_wymiar" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>24.</td>
+      <td>Czy pospad jest dodany?</td>
+      <td><input type="checkbox" name="pospad" value="Tak"></td>
+      <td><input type="checkbox" name="pospad" value="Nie"></td>
+      <td><input type="checkbox" name="pospad" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>25.</td>
+      <td>Czy klemy KA malowane, czy nie?</td>
+      <td><input type="checkbox" name="klemy_KA_malowane" value="Tak"></td>
+      <td><input type="checkbox" name="klemy_KA_malowane" value="Nie"></td>
+      <td><input type="checkbox" name="klemy_KA_malowane" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>25.</td>
+      <td>Czy klemy KN palne, czy nie?</td>
+      <td><input type="checkbox" name="klemy_KN_palne" value="Tak"></td>
+      <td><input type="checkbox" name="klemy_KN_palne" value="Nie"></td>
+      <td><input type="checkbox" name="klemy_KN_palne" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>26.</td>
+      <td>Czy elementy do klem dodane?</td>
+      <td><input type="checkbox" name="elementy_do_klem" value="Tak"></td>
+      <td><input type="checkbox" name="elementy_do_klem" value="Nie"></td>
+      <td><input type="checkbox" name="elementy_do_klem" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>27.</td>
+      <td>Czy kartony i skrzynie uwzględnione?</td>
+      <td><input type="checkbox" name="kartony_skrzynie" value="Tak"></td>
+      <td><input type="checkbox" name="kartony_skrzynie" value="Nie"></td>
+      <td><input type="checkbox" name="kartony_skrzynie" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>28.</td>
+      <td>Czy rozszerzenie jest prawidłowo rozpisane?</td>
+      <td><input type="checkbox" name="rozszerzenie_rozpisanie" value="Tak"></td>
+      <td><input type="checkbox" name="rozszerzenie_rozpisanie" value="Nie"></td>
+      <td><input type="checkbox" name="rozszerzenie_rozpisanie" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>29.</td>
+      <td>Czy brakuje informacji pack/issue, oraz printed?</td>
+      <td><input type="checkbox" name="brak_informacji" value="Tak"></td>
+      <td><input type="checkbox" name="brak_informacji" value="Nie"></td>
+      <td><input type="checkbox" name="brak_informacji" value="Nie dotyczy"></td>
+    </tr>
+    <tr>
+      <td>30.</td>
+      <td>Czy zgłoszone zostały wszystkie niejasności związane z dokumentacją do projektanta?</td>
+      <td><input type="checkbox" name="niejasnosci_projektant" value="Tak"></td>
+      <td><input type="checkbox" name="niejasnosci_projektant" value="Nie"></td>
+      <td><input type="checkbox" name="niejasnosci_projektant" value="Nie dotyczy"></td>
+    </tr>
+                                    </table>
+
+                                    
+                                </form>
+
+                            </body>
+                        </html>
+]]>
+                </HtmlWebViewSource.Html>
+            </HtmlWebViewSource>
+        </WebView.Source>
+    </WebView>
+    </Grid>
+</mct:Popup>
