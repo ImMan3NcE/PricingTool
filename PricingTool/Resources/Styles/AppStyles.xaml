@@ -21,7 +21,7 @@
     <Style TargetType="Entry" >
         <Setter Property="VerticalOptions" Value="Center"/>
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
-        <Setter Property="FontFamily" Value="TextCaveat"/>
+        <Setter Property="FontFamily" Value="RobotoMedium"/>
         <Setter Property="Margin" Value="10,10,0,0"/>
         <Setter Property="HeightRequest" Value="10"/>
         <Setter Property="BackgroundColor" Value="#B8F8EB"/>
@@ -85,10 +85,18 @@
     <Style TargetType="Label" x:Key="LblButtonStart">
         <Setter Property="VerticalOptions" Value="Center"/>
         <Setter Property="HorizontalOptions" Value="Center"/>
-        <Setter Property="FontSize" Value="50"/>
+        <Setter Property="FontSize" Value="48"/>
         <Setter Property="TextColor" Value="#18446F"/>
+        <Setter Property="FontFamily" Value="LobsterTwoItalic"/>
 
         
+    </Style>
+
+    <Style TargetType="Label" x:Key="LblResultPricing">
+        <Setter Property="VerticalOptions" Value="End"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+        <Setter Property="TextColor" Value="#18446F"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
     </Style>
 
 

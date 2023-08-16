@@ -1,11 +1,14 @@
+using PricingTool.MVVM.Models;
 using PricingTool.MVVM.ViewModels;
-
+using System.Collections.ObjectModel;
 
 namespace PricingTool.MVVM.Views;
 
 public partial class ProjectDataView : ContentPage
 {
     ProjectDataViewModel projectDataViewModel = new ProjectDataViewModel();
+    
+
 
     string ldcPath = "";
     string lpaPath = "";
@@ -14,7 +17,7 @@ public partial class ProjectDataView : ContentPage
     string travePath = "";
     string ltuPath = "";
     string lkkPath = "";
-
+    ObservableCollection<string> collectionItems = new ObservableCollection<string>();
     public ProjectDataView()
     {
         InitializeComponent();
@@ -134,11 +137,15 @@ public partial class ProjectDataView : ContentPage
     {
         projectDataViewModel.KillExcel();
         lblPercentages.Text = "START";
+        collectionItems.Clear();
+        AddLabelResult("Zresetowano.");
+        
 
     }
 
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
+        collectionItems.Clear();
         if (lblPercentages.Text.ToLower() == "start")
         {
             bool isValid = await DataValidation();
@@ -148,7 +155,7 @@ public partial class ProjectDataView : ContentPage
                 GenerateFile();
             }
         }
-
+        ScreenSave();
     }
     public async Task<bool> DataValidation()
     {
@@ -287,40 +294,141 @@ public partial class ProjectDataView : ContentPage
     public async void GenerateFile()
     {
         if (!string.IsNullOrEmpty(ldcPath))
+        {
             projectDataViewModel.TransformLDC(ldcPath);
+            AddLabelResult("Przygotowano LDC!");
+        }
+            
         lblPercentages.Text = "15 %";
+
         await Task.Delay(100);
 
         if (!string.IsNullOrEmpty(lpaPath))
+        {
             projectDataViewModel.TransformLPA(lpaPath);
+            AddLabelResult("Przygotowano LPA!");
+        }
+            
         lblPercentages.Text = "30 %";
         await Task.Delay(100);
 
         if (!string.IsNullOrEmpty(entryLPL.Text))
+        {
             projectDataViewModel.TransformLPL(lplPath);
+            AddLabelResult("Przygotowano LPL!");
+        }
+            
         lblPercentages.Text = "45 %";
         await Task.Delay(100);
 
         if (!string.IsNullOrEmpty(entryLAC.Text))
+        {
             projectDataViewModel.TransformLAC(lacPath);
+            AddLabelResult("Przygotowano LAC!");
+        }
+            
         lblPercentages.Text = "60 %";
         await Task.Delay(100);
 
         if (!string.IsNullOrEmpty(entryTrave.Text))
+        {
             projectDataViewModel.TransformTrave(travePath);
+            AddLabelResult("Przygotowano TRAVE!");
+        }
+            
         lblPercentages.Text = "75 %";
         await Task.Delay(100);
 
         if (!string.IsNullOrEmpty(entryLTU.Text))
+        {
             projectDataViewModel.TransformLTU(ltuPath);
+            AddLabelResult("Przygotowano LTU!");
+        }
+            
         lblPercentages.Text = "85 %";
         await Task.Delay(100);
         if (!string.IsNullOrEmpty(entryLKK.Text))
+        {
             projectDataViewModel.TransformLKK(lkkPath);
+            AddLabelResult("Przygotowano LKK!");
+        }
+            
         lblPercentages.Text = "95 %";
         await Task.Delay(100);
 
-        projectDataViewModel.NewFileExcel((entryMainPath.Text.Replace("\"", "") + "\\" + entryMainName.Text.Replace("\"", "")+".xlsx"));
+        projectDataViewModel.NewFileExcel((entryMainPath.Text.Replace("\"", "") + "\\" + entryMainName.Text.Replace("\"", "") + ".xlsx"));
         lblPercentages.Text = "Done!";
+        AddLabelResult($"Przygotowano plik {entryMainName.Text}!");
+
     }
+
+    public void AddLabelResult(string stepOfPricing)
+    {
+
+        collectionItems.Insert(0,stepOfPricing);
+        LoadCollectionView();
+
+    }
+
+    public void LoadCollectionView()
+    {
+        
+        CollectionView collectionView = new CollectionView
+        {
+            ItemsSource = collectionItems,
+
+            ItemTemplate = new DataTemplate(() =>
+            {
+
+
+                Label label = new Label
+                {
+                    //Style = (Style)Resources["LblResultPricing"],
+                    //VerticalOptions = LayoutOptions.End,
+                    //HorizontalOptions = LayoutOptions.End,
+                    //HorizontalTextAlignment = TextAlignment.End,
+                    Margin = new Thickness(10, 0, 20, 0),
+                    FontAttributes = FontAttributes.Italic,
+                    TextColor = Color.FromArgb("#18446F"),
+                    //BackgroundColor = Color.FromRgb(255, 99, 71)
+
+                };
+                label.SetBinding(Label.TextProperty, new Binding("."));
+
+                //vslResultReport.Children.Add(label);
+                return label;
+
+            }),
+            
+
+        };
+
+        clvResultReport.ItemsSource = collectionView.ItemsSource;
+        clvResultReport.ItemTemplate = collectionView.ItemTemplate;
+        
+        //clvResultReport.ScrollTo(collectionItems.Last(), ScrollToPosition.Start,ScrollToPosition.MakeVisible, true) ;
+    }
+
+    public async void ScreenSave()
+    {
+        var result = await GridScreenSave.CaptureAsync();
+        using MemoryStream memoryStream = new MemoryStream();
+
+        await result.CopyToAsync(memoryStream);
+
+        string fullPath = Path.Combine(entryMainPath.Text.Replace("\"", "") + "\\" + entryMainName.Text.Replace("\"", "") + ".png");
+
+        File.WriteAllBytes(fullPath, memoryStream.ToArray());
+
+
+
+        await Share.Default.RequestAsync(new ShareFileRequest
+        {
+            File = new ShareFile(fullPath),
+
+
+        });
+    }
+
+
 }

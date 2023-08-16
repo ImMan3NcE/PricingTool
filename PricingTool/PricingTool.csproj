@@ -94,6 +94,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\LobsterTwo-Italic.ttf" />
+	  <None Remove="Resources\Fonts\Roboto-Medium.ttf" />
 	  <None Remove="Resources\Images\btnbackgroundstart.png" />
 	</ItemGroup>
 

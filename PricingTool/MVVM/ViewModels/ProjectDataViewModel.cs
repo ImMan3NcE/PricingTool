@@ -18,11 +18,11 @@ public class ProjectDataViewModel : ContentPage
 
     //public ProjectData ProjectData { get; set; }
     ProjectData projectData = new ProjectData();
-    //string outputFile = "C:\\Users\\Filip\\Desktop\\testyCsv\\dataInteropProjectData.xlsx";
+    
 
     public ProjectDataViewModel()
     {
-
+        
 
     }
 
@@ -189,6 +189,7 @@ public class ProjectDataViewModel : ContentPage
         Excel.Range rangeLPA = worksheetLPA.Range[$"A1:P{lastRowLPA}"];
         projectData.dataLPA = (object[,])rangeLPA.Value; // Pobieramy dane jako dwuwymiarowa tablica obiektów
 
+        
 
         workbookLPA.Saved = true;
         workbookLPA.Close(false);
@@ -226,7 +227,8 @@ public class ProjectDataViewModel : ContentPage
         projectData.plateKidsLPL = worksheetLPL.Cells[43, 11].Value.ToString();
 
 
-
+        
+        
         workbookLPL.Saved = true;
         workbookLPL.Close(false);
         excelApp.Quit();
@@ -289,7 +291,7 @@ public class ProjectDataViewModel : ContentPage
         Excel.Worksheet worksheetLTU = (Excel.Worksheet)workbookLTU.Worksheets[1];
 
         projectData.pospadValue = worksheetLTU.Cells[8, 10].Value.ToString();
-
+        
         workbookLTU.Saved = true;
         workbookLTU.Close(false);
         excelApp.Quit();
@@ -524,5 +526,20 @@ public class ProjectDataViewModel : ContentPage
 
     }
 
+    // testy
+    private string labelText;
+    public string LabelText
+    {
+        get { return labelText; }
+        set
+        {
+            labelText = value;
+            OnPropertyChanged(nameof(LabelText));
+        }
+    }
 
+    public void ChangeLabelText()
+    {
+        LabelText = "Nowa wartoœæ etykiety";
+    }
 }

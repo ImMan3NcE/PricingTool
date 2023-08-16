@@ -8,7 +8,9 @@
 
 
     <Grid ColumnDefinitions=".6*,.4*"
-          Margin="50">
+          Margin="50"
+          x:Name="GridScreenSave"
+          BackgroundColor="#57DEC4">
         <Grid Grid.Column="0"
               RowDefinitions="*,*,*,*,*,*,*,*"
               Margin="10">
@@ -93,16 +95,16 @@
         <!-- cześć z informacjami-->
         <Grid Grid.Column="1" RowDefinitions="*,*,*" Style="{StaticResource GridResults}">
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Button Text="Reset"
+                        Clicked="Button_Clicked"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
+                <Label Text="{Binding LabelText}"/>
                 <Button Text="Kill excel"
                         Clicked="Button_Clicked"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"/>
-                <Label Text="dupa"/>
-                <Button Text="Kill excel"
-                        Clicked="Button_Clicked"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"/>
-                
+
             </HorizontalStackLayout>
 
             <!--<ImageButton x:Name="btnStart" Grid.Row="1"
@@ -121,19 +123,10 @@
                        Style="{StaticResource LblButtonStart}"
                        Text="START" />
             </Grid>
-            <CollectionView  Grid.Row="2" ItemsSource="{Binding Steps}" >
-                <!--<CollectionView Grid.Row="2" >-->
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Label 
-                               Text="{Binding dataLDC{0}}"
-                               VerticalOptions="End"
-                               HorizontalOptions="End"
-                               Margin="0,0,10,10"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
 
-            </CollectionView>
+            <CollectionView x:Name="clvResultReport"   Grid.Row="2"/>
+
+
 
 
         </Grid>
